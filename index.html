@@ -505,7 +505,6 @@ function excelHata(){
 }
   
 function openDocument(){ 
-    // PDF açılınca butonları gizle
     document.querySelector(".warning-buttons").style.display = "none";
   
     document.querySelector(".modal-header").style.display = "none";
@@ -514,18 +513,22 @@ function openDocument(){
 
     var modalBody = document.querySelector(".modal-body");
     modalBody.style.background = "transparent";
-    modalBody.style.padding = "0";
+    modalBody.style.padding = "10px";
+    
+    /* 🔥 KRİTİK KISIM */
     modalBody.style.display = "flex";
-    modalBody.style.justifyContent = "center";
+    modalBody.style.flexDirection = "column";  // ALT ALTA ZORLA
     modalBody.style.alignItems = "center";
+    modalBody.style.justifyContent = "flex-start";
 
-    var evrak = document.querySelector(".evrak");
-    evrak.style.display = "block";
-    evrak.style.maxWidth = "100%";
-    evrak.style.maxHeight = "100%";
-    evrak.style.width = "auto";
-    evrak.style.height = "auto";
-    evrak.style.objectFit = "contain"; 
+    var evraklar = document.querySelectorAll(".evrak");
+    evraklar.forEach(function(e){
+        e.style.display = "block";
+        e.style.maxWidth = "100%";
+        e.style.width = "100%";
+        e.style.height = "auto";
+        e.style.marginBottom = "20px"; // sayfa arası boşluk
+    });
 }
 
 var toastTimeout;
